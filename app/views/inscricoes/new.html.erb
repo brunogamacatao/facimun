@@ -1,0 +1,62 @@
+<%= simple_form_for @inscricao do |f| %>
+  <div class="row">
+    <div class="small-6 columns">
+      <%= field_set_tag 'Delegado A', :class => 'panel radius' do %>
+        <%= f.simple_fields_for :delegado_a do |d| %>
+          <%= d.input "nome" %>
+          <%= d.input "data_de_nascimento", input_html: { class: 'data' } %>
+          <%= d.input "cidade" %>
+          <%= d.input "uf", collection: Estado.order(:nome), label_method: :nome, value_method: :sigla %>
+          <%= d.input "instituicao" %>
+          <%= d.input "curso" %>
+          <%= d.input "periodo" %>
+          <%= d.input "email" %>
+          <%= d.input "telefone", input_html: { class: 'telefone' } %>
+          <%= d.input "socio_anet", input_html: { class: 'socio_anet_a' } %>
+          <%= d.input "codigo_anet", wrapper_html: { class: 'codigo_anet_a' } %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="small-6 columns">
+      <%= field_set_tag 'Delegado B', :class => 'panel radius' do %>
+        <%= f.simple_fields_for :delegado_b do |d| %>
+          <%= d.input "nome" %>
+          <%= d.input "data_de_nascimento", input_html: { class: 'data' } %>
+          <%= d.input "cidade" %>
+          <%= d.input "uf", collection: Estado.order(:nome), label_method: :nome, value_method: :sigla %>
+          <%= d.input "instituicao" %>
+          <%= d.input "curso" %>
+          <%= d.input "periodo" %>
+          <%= d.input "email" %>
+          <%= d.input "telefone", input_html: { class: 'telefone' } %>
+          <%= d.input "socio_anet", input_html: { class: 'socio_anet_b' } %>
+          <%= d.input "codigo_anet", wrapper_html: { class: 'codigo_anet_b' } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <%= field_set_tag 'Paises', :class => 'panel radius' do %>
+      <ul class="small-block-grid-2 large-block-grid-2">
+      <%= f.simple_fields_for :preferencia_paises do |pref| %>
+        <li>
+          <div class="small-8">
+            <div class="row">
+              <div class="small-3 columns">
+                <label for="right-label" class="right inline"><%= pref.object.pais.nome %></label>
+              </div>
+              <div class="small-9 columns">
+                <%= pref.association :pais, as: :hidden %>
+                <%= pref.input :preferencia, collection: 0..10, as: :star_rating, label: false, error_html: { class: 'validation_error'} %>
+              </div>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      <ul>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= f.submit 'Finalizar Inscrição', :class => 'large button expand round' %>
+  </div>
+<% end %>  
