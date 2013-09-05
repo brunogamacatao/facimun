@@ -27,4 +27,9 @@ class InscricoesController < ApplicationController
   def show
     @inscricao = Inscricao.find(params[:id])
   end
+  
+  def boleto
+    @inscricao = Inscricao.find(params[:inscricao_id])
+    @titulo    = @inscricao.titulos.last
+  end
 end

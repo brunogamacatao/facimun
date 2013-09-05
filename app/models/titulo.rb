@@ -10,7 +10,7 @@ class Titulo < ActiveRecord::Base
   attr_accessible :data_de_vencimento, :valor, :inscricao_id
   
   def boleto
-    Boleto.boleto do
+    @boleto ||= Boleto.boleto do
       datas do
         vencimento    data_de_vencimento
         documento     DateTime.now.to_date
@@ -50,7 +50,7 @@ class Titulo < ActiveRecord::Base
   end
   
   def banco
-    Banco::Bnb.new(boleto)
+    @banco ||= Banco::Bnb.new(boleto)
   end
   
   has_barcode :codigo_de_barras,

@@ -1,8 +1,10 @@
 Facimun::Application.routes.draw do
-  get "inscricoes/nova"
+#  get "inscricoes/boleto", :as => :emitir_boleto
 
   resources :paises
-  resources :inscricoes
+  resources :inscricoes do
+    get :boleto, to: "inscricoes#boleto", as: :emitir_boleto
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

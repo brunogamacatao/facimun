@@ -1,2 +1,3 @@
 <h1 id="estou_aqui_!!!!">Estou Aqui !!!!</h1>
+<%= link_to "Emitir Boleto", inscricao_emitir_boleto_path(@inscricao) %>
 <%= @inscricao.titulos.last.codigo_de_barras_data.html_safe %>
