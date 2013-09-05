@@ -4,14 +4,19 @@
       <%= field_set_tag 'Delegado A', :class => 'panel radius' do %>
         <%= f.simple_fields_for :delegado_a do |d| %>
           <%= d.input "nome" %>
+          <%= d.input "cpf", input_html: { class: 'cpf' } %>
           <%= d.input "data_de_nascimento", input_html: { class: 'data' } %>
+          <%= d.input "email" %>
+          <%= d.input "telefone", input_html: { class: 'telefone' } %>
+          <%= d.input "endereco", label: "Endereço" %>
+          <%= d.input "bairro" %>
+          <%= d.input "cep", input_html: { class: 'cep' } %>
+          <%= d.input "complemento" %>
           <%= d.input "cidade" %>
           <%= d.input "uf", collection: Estado.order(:nome), label_method: :nome, value_method: :sigla %>
           <%= d.input "instituicao" %>
           <%= d.input "curso" %>
           <%= d.input "periodo" %>
-          <%= d.input "email" %>
-          <%= d.input "telefone", input_html: { class: 'telefone' } %>
           <%= d.input "socio_anet", input_html: { class: 'socio_anet_a' } %>
           <%= d.input "codigo_anet", wrapper_html: { class: 'codigo_anet_a' } %>
         <% end %>
@@ -21,16 +26,21 @@
       <%= field_set_tag 'Delegado B', :class => 'panel radius' do %>
         <%= f.simple_fields_for :delegado_b do |d| %>
           <%= d.input "nome" %>
+          <%= d.input "cpf", input_html: { class: 'cpf' } %>
           <%= d.input "data_de_nascimento", input_html: { class: 'data' } %>
+          <%= d.input "email" %>
+          <%= d.input "telefone", input_html: { class: 'telefone' } %>
+          <%= d.input "endereco", label: "Endereço" %>
+          <%= d.input "bairro" %>
+          <%= d.input "cep", input_html: { class: 'cep' } %>
+          <%= d.input "complemento" %>
           <%= d.input "cidade" %>
           <%= d.input "uf", collection: Estado.order(:nome), label_method: :nome, value_method: :sigla %>
           <%= d.input "instituicao" %>
           <%= d.input "curso" %>
           <%= d.input "periodo" %>
-          <%= d.input "email" %>
-          <%= d.input "telefone", input_html: { class: 'telefone' } %>
-          <%= d.input "socio_anet", input_html: { class: 'socio_anet_b' } %>
-          <%= d.input "codigo_anet", wrapper_html: { class: 'codigo_anet_b' } %>
+          <%= d.input "socio_anet", input_html: { class: 'socio_anet_a' } %>
+          <%= d.input "codigo_anet", wrapper_html: { class: 'codigo_anet_a' } %>
         <% end %>
       <% end %>
     </div>

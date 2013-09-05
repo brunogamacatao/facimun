@@ -6,6 +6,7 @@ class Inscricao < ActiveRecord::Base
   belongs_to :delegado_b, :class_name => "Delegado", :foreign_key => "delegado_b_id"
   
   has_many :preferencia_paises
+  has_many :titulos
   
   accepts_nested_attributes_for :delegado_a, :delegado_b, :preferencia_paises
 end

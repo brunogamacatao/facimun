@@ -6,6 +6,8 @@
 $ ->
   $('.telefone').mask('(99)9999-9999')
   $('.data').mask('99/99/9999')
+  $('.cpf').mask('999.999.999-99')
+  $('.cep').mask('99999-999')
   $('.codigo_anet_a').hide()
   $('.codigo_anet_b').hide()
   $('.socio_anet_a').change -> 

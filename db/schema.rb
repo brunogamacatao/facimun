@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902140846) do
+ActiveRecord::Schema.define(:version => 20130905121907) do
 
   create_table "delegados", :force => true do |t|
     t.string   "nome",                                               :null => false
@@ -27,6 +27,11 @@ ActiveRecord::Schema.define(:version => 20130902140846) do
     t.string   "codigo_anet"
     t.datetime "created_at",                                         :null => false
     t.datetime "updated_at",                                         :null => false
+    t.string   "cpf"
+    t.string   "endereco"
+    t.string   "bairro"
+    t.string   "cep"
+    t.string   "complemento"
   end
 
   create_table "estados", :force => true do |t|
@@ -62,5 +67,15 @@ ActiveRecord::Schema.define(:version => 20130902140846) do
 
   add_index "preferencia_paises", ["inscricao_id"], :name => "index_preferencia_paises_on_inscricao_id"
   add_index "preferencia_paises", ["pais_id"], :name => "index_preferencia_paises_on_pais_id"
+
+  create_table "titulos", :force => true do |t|
+    t.date     "data_de_vencimento"
+    t.decimal  "valor"
+    t.integer  "inscricao_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "titulos", ["inscricao_id"], :name => "index_titulos_on_inscricao_id"
 
 end

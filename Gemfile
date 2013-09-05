@@ -27,6 +27,8 @@ end
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'docile'
+gem 'barby'
+gem 'has_barcode'
 
 gem "rspec-rails", :group => [:test, :development]
 group :test do

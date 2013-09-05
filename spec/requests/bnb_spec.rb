@@ -24,7 +24,7 @@ describe "Bnb" do
         endereco "Endereco"
         bairro   "Bairro"
         cep      "58402-030"
-        cidade   "Campina Grande"
+        cidade   ["Campina Grande", "PB"]
       end
       documento do
         numero 123456
