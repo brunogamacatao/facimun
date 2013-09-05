@@ -11,19 +11,20 @@ module Boleto
     end
   end
   
-  Cedente = Struct.new(:cedente, :cnpj, :agencia, :conta, :convenio, :carteira, :operacao)
+  Cedente = Struct.new(:cedente, :cnpj, :agencia, :conta, :convenio, :carteira, :operacao, :nosso_numero)
   
   class CedenteBuilder
-    def cedente(v);  @cedente  = v; end;
-    def cnpj(v);     @cnpj     = v; end;
-    def agencia(v);  @agencia  = v; end;
-    def conta(v);    @conta    = v; end;
-    def convenio(v); @convenio = v; end;
-    def carteira(v); @carteira = v; end;
-    def operacao(v); @operacao = v; end;
+    def cedente(v);            @cedente      = v; end;
+    def cnpj(v);               @cnpj         = v; end;
+    def agencia(v);            @agencia      = v; end;
+    def conta(v);              @conta        = v; end;
+    def convenio(v);           @convenio     = v; end;
+    def carteira(v);           @carteira     = v; end;
+    def operacao(v);           @operacao     = v; end;
+    def nosso_numero(v = nil); @nosso_numero = v; end;
     
     def build
-      Cedente.new(@cedente, @cnpj, @agencia, @conta, @convenio, @carteira, @operacao)
+      Cedente.new(@cedente, @cnpj, @agencia, @conta, @convenio, @carteira, @operacao, @nosso_numero)
     end
   end
   
@@ -42,14 +43,15 @@ module Boleto
     end
   end
   
-  Documento = Struct.new(:numero, :especie)
+  Documento = Struct.new(:numero, :especie, :parcela)
   
   class DocumentoBuilder
-    def numero(v);  @numero = v;  end;
-    def especie(v); @especie = v; end;
+    def numero(v);      @numero = v;  end;
+    def especie(v);     @especie = v; end;
+    def parcela(v = 1); @parcela = v; end;
     
     def build
-      Documento.new(@numero, @especie)
+      Documento.new(@numero, @especie, @parcela)
     end
   end
   
