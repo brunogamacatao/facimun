@@ -39,3 +39,4 @@ end
 
 gem 'unicorn'
 gem 'capistrano'
+gem 'activeadmin'
