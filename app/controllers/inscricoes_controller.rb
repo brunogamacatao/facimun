@@ -32,6 +32,6 @@ class InscricoesController < ApplicationController
   def boleto
     @inscricao = Inscricao.find(params[:inscricao_id])
     @titulo    = @inscricao.titulos.last
-    render :layout => 'boleto'#, template: "boletos/bnb"
+    render :layout => 'boleto', template: "boletos/bnb"
   end
 end

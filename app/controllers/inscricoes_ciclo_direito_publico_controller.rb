@@ -27,6 +27,6 @@ class InscricoesCicloDireitoPublicoController < ApplicationController
   def boleto
     @inscricao = InscricaoCicloDireitoPublico.find(params[:inscricao_ciclo_direito_publico_id])
     @titulo    = @inscricao.titulos.last
-    render :layout => 'boleto'#, template: "boletos/bnb"
+    render :layout => 'boleto', template: "boletos/bnb"
   end
 end
