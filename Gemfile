@@ -36,3 +36,6 @@ group :test do
   gem "capybara"
   gem "guard-rspec"
 end
+
+gem 'unicorn'
+gem 'capistrano'
