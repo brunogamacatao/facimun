@@ -1,0 +1,31 @@
+<%= simple_form_for @inscricao do |f| %>
+  <div class="row">
+    <%= field_set_tag 'Dados Pessoais', :class => 'panel radius' do %>
+      <div class="small-6 columns">
+        <%= f.input "nome" %>
+        <%= f.input "cpf", input_html: { class: 'cpf' } %>
+        <%= f.input "data_de_nascimento", input_html: { class: 'data' } %>
+        <%= f.input "email" %>
+        <%= f.input "telefone", input_html: { class: 'telefone' } %>
+        <%= f.input "endereco", label: "Endereço" %>
+        <%= f.input "bairro" %>
+      </div>
+      <div class="small-6 columns">
+        <%= f.input "cep", input_html: { class: 'cep' } %>
+        <%= f.input "complemento" %>
+        <%= f.input "cidade" %>
+        <%= f.input "uf", collection: Estado.order(:nome), label_method: :nome, value_method: :sigla %>
+        <%= f.input "instituicao" %>
+        <%= f.input "curso" %>
+        <%= f.input "periodo" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <h3><%= f.input "aluno_facisa", label: "&nbsp;É aluno FACISA ?", input_html: { class: 'aluno_facisa' } %></h3>
+    <%= f.input "matricula", label: "Matrícula", wrapper_html: { class: 'matricula' } %>
+  </div>
+  <div class="row">
+    <%= f.submit 'Finalizar Inscrição', :class => 'large button expand round' %>
+  </div>
+<% end %>  

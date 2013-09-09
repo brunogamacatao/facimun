@@ -6,8 +6,12 @@ require 'bnb'
 class Titulo < ActiveRecord::Base
   include HasBarcode  
   
-  belongs_to :inscricao
-  attr_accessible :data_de_vencimento, :valor, :inscricao_id
+  belongs_to :inscricao_generica
+  attr_accessible :data_de_vencimento, :valor, :inscricao_generica_id
+  
+  def inscricao; inscricao_generica.inscrevivel; end;
+  def sacado; inscricao_generica.inscrevivel.sacado; end;
+  def valor_boleto; valor; end;
   
   def boleto
     @boleto ||= Boleto.boleto do
@@ -26,19 +30,19 @@ class Titulo < ActiveRecord::Base
         operacao 2
       end
       sacado do
-        nome     inscricao.delegado_a.nome
-        cpf      inscricao.delegado_a.cpf
-        endereco inscricao.delegado_a.endereco
-        bairro   inscricao.delegado_a.bairro
-        cep      inscricao.delegado_a.cep
-        cidade   [inscricao.delegado_a.cidade, inscricao.delegado_a.uf]
+        nome     sacado.nome
+        cpf      sacado.cpf
+        endereco sacado.endereco
+        bairro   sacado.bairro
+        cep      sacado.cep
+        cidade   [sacado.cidade, sacado.uf]
       end
       documento do
         numero id
         especie "DM"
       end
       moeda 9
-      valor valor
+      valor valor_boleto
       locaisPagamento ["Pagar até o vencimento",
                        "Não receber após a data de vencimento"]
       instrucoes ["Não receber após a data de vencimento",

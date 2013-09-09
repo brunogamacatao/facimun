@@ -10,7 +10,10 @@ $ ->
   $('.cep').mask('99999-999')
   $('.codigo_anet_a').hide()
   $('.codigo_anet_b').hide()
+  $('.matricula').hide()
   $('.socio_anet_a').change -> 
     $('.codigo_anet_a').toggle()
   $('.socio_anet_b').change -> 
-    $('.codigo_anet_b').toggle()    
+    $('.codigo_anet_b').toggle()
+  $('.aluno_facisa').change ->
+    $('.matricula').toggle()

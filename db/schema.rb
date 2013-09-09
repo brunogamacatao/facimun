@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905121907) do
+ActiveRecord::Schema.define(:version => 20130909173730) do
 
   create_table "delegados", :force => true do |t|
     t.string   "nome",                                               :null => false
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20130905121907) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "inscricao_genericas", :force => true do |t|
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "inscrevivel_id"
+    t.string   "inscrevivel_type"
+  end
+
   create_table "inscricoes", :force => true do |t|
     t.integer  "delegado_a_id"
     t.integer  "delegado_b_id"
@@ -50,6 +57,34 @@ ActiveRecord::Schema.define(:version => 20130905121907) do
 
   add_index "inscricoes", ["delegado_a_id"], :name => "index_inscricoes_on_delegado_a_id"
   add_index "inscricoes", ["delegado_b_id"], :name => "index_inscricoes_on_delegado_b_id"
+
+  create_table "inscricoes_ciclo_direito_publico", :force => true do |t|
+    t.string   "nome"
+    t.string   "cpf"
+    t.string   "data_de_nascimento"
+    t.string   "email"
+    t.string   "telefone"
+    t.string   "endereco"
+    t.string   "bairro"
+    t.string   "cep"
+    t.string   "cidade"
+    t.string   "uf"
+    t.string   "complemento"
+    t.string   "instituicao"
+    t.string   "curso"
+    t.integer  "periodo"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.boolean  "aluno_facisa"
+    t.integer  "matricula"
+  end
+
+  create_table "inscricoes_genericas", :force => true do |t|
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "inscrevivel_id"
+    t.string   "inscrevivel_type"
+  end
 
   create_table "paises", :force => true do |t|
     t.string   "nome"
@@ -71,11 +106,9 @@ ActiveRecord::Schema.define(:version => 20130905121907) do
   create_table "titulos", :force => true do |t|
     t.date     "data_de_vencimento"
     t.decimal  "valor"
-    t.integer  "inscricao_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "inscricao_generica_id"
   end
-
-  add_index "titulos", ["inscricao_id"], :name => "index_titulos_on_inscricao_id"
 
 end
