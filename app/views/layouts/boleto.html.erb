@@ -3,11 +3,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= content_for?(:title) ? yield(:title) : "Boleto" %></title>
-    <%= stylesheet_link_tag "boleto" %>
+    <%= stylesheet_link_tag "boleto", :media => "all" %>
     <script type="text/javascript">
       window.print();
     </script>
     <style type="text/css">
+      @media print {
+          .no-print, .no-print * {
+              display: none !important;
+          }
+      }
+    
       fieldset {
         padding: 0;
       }
@@ -32,6 +38,7 @@
     </style>
   </head>
   <body>
+    <form class="no-print"><input type="button" onClick="window.print()" value="Imprimir"><br/><hr/></form>
     <%= yield %>
   </body>
 </html>
