@@ -12,6 +12,7 @@ class Titulo < ActiveRecord::Base
   def inscricao; inscricao_generica.inscrevivel; end;
   def sacado; inscricao_generica.inscrevivel.sacado; end;
   def valor_boleto; valor; end;
+  def to_s; id; end;
   
   def boleto
     @boleto ||= Boleto.boleto do

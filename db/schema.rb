@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130909210538) do
+ActiveRecord::Schema.define(:version => 20130911215053) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -118,6 +118,15 @@ ActiveRecord::Schema.define(:version => 20130909210538) do
     t.integer  "inscrevivel_id"
     t.string   "inscrevivel_type"
   end
+
+  create_table "pagamentos", :force => true do |t|
+    t.decimal  "valor"
+    t.integer  "titulo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "pagamentos", ["titulo_id"], :name => "index_pagamentos_on_titulo_id"
 
   create_table "paises", :force => true do |t|
     t.string   "nome"
