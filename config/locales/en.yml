@@ -3,6 +3,9 @@
 
 en:
   hello: "Hello world"
-  errors:
-    messages:
-      blank: "Campo obrigatório"
+  matricula_mailer:
+    confirmacao:
+      subject: "Matrícula Confirmada"
+  date:
+    formats:
+      default: "%d/%m/%Y"  

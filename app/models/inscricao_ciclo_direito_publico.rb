@@ -16,4 +16,8 @@ class InscricaoCicloDireitoPublico < ActiveRecord::Base
   def aluno_facisa?
     aluno_facisa
   end
+  
+  def ultimo_titulo
+    titulos.last
+  end
 end
