@@ -17,7 +17,7 @@ class InscricoesController < ApplicationController
     @inscricao = Inscricao.new(params[:inscricao])
     if @inscricao.save
       inscrevivel = InscricaoGenerica.create! { |i| i.inscrevivel = @inscricao }
-      inscrevivel.titulos << Titulo.create(inscricao_generica_id: @inscricao, data_de_vencimento: 3.days.from_now.to_date, valor: 128.5)
+      inscrevivel.titulos << Titulo.create(inscricao_generica_id: @inscricao, data_de_vencimento: 3.days.from_now.to_date, valor: 40.0)
       redirect_to @inscricao, notice: 'Sua inscrição foi realizada com sucesso.'
     else
       render action: "new"
