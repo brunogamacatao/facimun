@@ -5,4 +5,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'inscricao_ciclo_direito_publico', 'inscricoes_ciclo_direito_publico'
   inflect.irregular 'titulo', 'titulos'
   inflect.irregular 'pagamento', 'pagamentos'
+  inflect.irregular 'comite', 'comites'
 end

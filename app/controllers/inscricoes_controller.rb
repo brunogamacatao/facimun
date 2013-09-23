@@ -6,8 +6,7 @@ class InscricoesController < ApplicationController
   
   def new
     @inscricao = Inscricao.new
-    @inscricao.delegado_a = Delegado.new
-    @inscricao.delegado_b = Delegado.new
+    @inscricao.delegado = Delegado.new
     
     Pais.all.each do |pais|
       @inscricao.preferencia_paises << PreferenciaPais.new(:inscricao => @inscricao, :pais => pais)
