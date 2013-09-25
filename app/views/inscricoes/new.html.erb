@@ -1,13 +1,5 @@
 <%= simple_form_for @inscricao do |f| %>
   <div class="row">
-    <%= field_set_tag 'Escolha o seu Comitê', :class => 'panel radius' do %>
-      <%= f.association :comite %>
-    <% end %>
-    <%= field_set_tag 'Escolha o seu Cargo', :class => 'panel radius' do %>
-      <%= f.association :cargo %>
-    <% end %>
-  </div>
-  <div class="row">
     <%= field_set_tag 'Delegado', :class => 'panel radius' do %>
       <%= f.simple_fields_for :delegado do |d| %>
         <div class="small-6 columns">
@@ -33,32 +25,67 @@
       <% end %>
     <% end %>
   </div>
+  
   <div class="row">
-    <%= field_set_tag 'Indique a Sua Preferência Para Cada País', :class => 'panel radius' do %>
-      <ul class="small-block-grid-2 large-block-grid-2">
-      <%= f.simple_fields_for :preferencia_paises do |pref| %>
-        <li>
-          <div class="small-8">
-            <div class="row">
-              <div class="small-3 columns">
-                <label for="right-label" class="right inline"><%= pref.object.pais.nome %></label>
-              </div>
-              <div class="small-9 columns">
-                <%= pref.association :pais, as: :hidden %>
-                <%= pref.input :preferencia, collection: 0..10, as: :star_rating, label: false, error_html: { class: 'validation_error'} %>
+    <%= field_set_tag 'Escolha o seu Comitê', :class => 'panel radius' do %>
+      <%= f.association :comite %>
+    <% end %>
+  </div>
+  
+  <div id="dados_embraer">
+    <div class="row">
+      <%= field_set_tag 'Indique a Sua Preferência Para Cada País', :class => 'panel radius' do %>
+        <ul class="small-block-grid-2 large-block-grid-2">
+        <%= f.simple_fields_for :preferencia_paises do |pref| %>
+          <li>
+            <div class="small-8">
+              <div class="row">
+                <div class="small-3 columns">
+                  <label for="right-label" class="right inline"><%= pref.object.pais.nome %></label>
+                </div>
+                <div class="small-9 columns">
+                  <%= pref.association :pais, as: :hidden %>
+                  <%= pref.input :preferencia, collection: 0..10, as: :star_rating, label: false, error_html: { class: 'validation_error'} %>
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
+        <% end %>
+        <ul>
       <% end %>
-      <ul>
-    <% end %>
+    </div>
+  
+    <div class="row">
+      <%= field_set_tag 'Justifique a escolha dos seus 3 países preferidos', :class => 'panel radius' do %>
+        <%= f.input :justificativa %>
+      <% end %>
+    </div>
   </div>
-  <div class="row">
-    <%= field_set_tag 'Justifique a escolha dos seus 3 países preferidos', :class => 'panel radius' do %>
-      <%= f.input :justificativa %>
-    <% end %>
+  
+  <div id="dados_seguranca">
+    <div class="row">
+      <%= field_set_tag 'Indique a Sua Preferência Para Cada Cargo', :class => 'panel radius' do %>
+        <ul class="small-block-grid-1 large-block-grid-1">
+        <%= f.simple_fields_for :preferencia_cargos do |pref| %>
+          <li>
+            <div class="small-8">
+              <div class="row">
+                <div class="small-7 columns">
+                  <label for="right-label" class="right inline"><%= pref.object.cargo.nome %></label>
+                </div>
+                <div class="small-5 columns">
+                  <%= pref.association :cargo, as: :hidden %>
+                  <%= pref.input :preferencia, collection: 0..10, as: :star_rating, label: false, error_html: { class: 'validation_error'} %>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+        <ul>
+      <% end %>
+    </div>  
   </div>
+  
   <div class="row">
     <%= f.submit 'Finalizar Inscrição', :class => 'large button expand round' %>
   </div>

@@ -1,6 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #= require jquery.rating.pack.js
 #= require jquery.maskedinput.min.js
 $ ->
@@ -17,3 +14,21 @@ $ ->
     $('.codigo_anet_b').toggle()
   $('.aluno_facisa').change ->
     $('.matricula').toggle()
+  
+  mostra_esconde_dados()
+  
+  $('#inscricao_comite_id').change ->
+    mostra_esconde_dados()
+
+mostra_esconde_dados = ->
+  valor = parseInt($('#inscricao_comite_id').val())
+  if valor == 1
+    $('#dados_embraer').show()
+    $('#dados_seguranca').hide()
+  else if valor == 2
+    $('#dados_embraer').hide()
+    $('#dados_seguranca').show()
+  else
+    $('#dados_embraer').hide()
+    $('#dados_seguranca').hide()
+  

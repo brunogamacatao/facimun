@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130925134654) do
+ActiveRecord::Schema.define(:version => 20130925145713) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -99,7 +99,6 @@ ActiveRecord::Schema.define(:version => 20130925134654) do
     t.datetime "updated_at",    :null => false
     t.integer  "delegado_id"
     t.integer  "comite_id"
-    t.integer  "cargo_id"
     t.text     "justificativa"
   end
 
@@ -148,6 +147,17 @@ ActiveRecord::Schema.define(:version => 20130925134654) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "preferencia_cargos", :force => true do |t|
+    t.integer  "inscricao_id"
+    t.integer  "cargo_id"
+    t.integer  "preferencia"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "preferencia_cargos", ["cargo_id"], :name => "index_preferencia_cargos_on_cargo_id"
+  add_index "preferencia_cargos", ["inscricao_id"], :name => "index_preferencia_cargos_on_inscricao_id"
 
   create_table "preferencia_paises", :force => true do |t|
     t.integer  "inscricao_id"

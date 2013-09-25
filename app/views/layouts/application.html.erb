@@ -22,6 +22,16 @@
 
   <body>
 
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <div class="alert-box #{name == :notice ? "success" : "alert"}" data-alert>
+          <%= msg %>
+          <a href="#">&times;</a>
+        </div>
+     <% end %>
+   <% end %>
+
+
     <%= yield %>
 
     
