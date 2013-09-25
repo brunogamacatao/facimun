@@ -3,6 +3,9 @@
     <%= field_set_tag 'Escolha o seu Comitê', :class => 'panel radius' do %>
       <%= f.association :comite %>
     <% end %>
+    <%= field_set_tag 'Escolha o seu Cargo', :class => 'panel radius' do %>
+      <%= f.association :cargo %>
+    <% end %>
   </div>
   <div class="row">
     <%= field_set_tag 'Delegado', :class => 'panel radius' do %>
@@ -49,6 +52,11 @@
         </li>
       <% end %>
       <ul>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= field_set_tag 'Justifique a escolha dos seus 3 países preferidos', :class => 'panel radius' do %>
+      <%= f.input :justificativa %>
     <% end %>
   </div>
   <div class="row">

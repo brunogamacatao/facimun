@@ -6,4 +6,5 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'titulo', 'titulos'
   inflect.irregular 'pagamento', 'pagamentos'
   inflect.irregular 'comite', 'comites'
+  inflect.irregular 'cargo', 'cargos'
 end
