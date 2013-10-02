@@ -1,0 +1,34 @@
+<h1>FACIMUN</h1>
+<h3>Relatório de Inscrições</h3>
+<table>
+  <thead>
+    <tr>
+      <th width="50">Data</th>
+      <th width="350">Inscrito</th>
+      <th>E-mail</th>
+      <th>Instituição</th>
+      <th width="350">Comitê</th>
+      <th width="350">Preferências</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inscricoes.each do |inscricao| %>
+      <% next if inscricao.delegado.blank? %>
+      <tr>
+        <td><%= inscricao.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= inscricao.delegado.try(:nome) %></td>
+        <td><%= inscricao.delegado.try(:email) %></td>
+        <td><%= inscricao.delegado.try(:instituicao) %></td>
+        <td><%= inscricao.comite.try(:nome) %></td>
+        <td>
+          <% inscricao.preferencia_cargos.order("preferencia DESC").each do |pref| %>
+            <b><%= pref.preferencia %></b>: <%= pref.cargo.nome %>, 
+          <% end %>
+          <% inscricao.preferencia_paises.order("preferencia DESC").each do |pref| %>
+            <b><%= pref.try(:preferencia) %></b>: <%= pref.pais.try(:nome) %>, 
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

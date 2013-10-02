@@ -1,4 +1,6 @@
 Facimun::Application.routes.draw do
+  get "relatorios/index"
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
