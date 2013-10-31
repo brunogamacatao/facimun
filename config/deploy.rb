@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-server "187.33.255.26:2220", :web, :app, :db, primary: true
+server "ltiserver.cesed.br:2220", :web, :app, :db, primary: true
 
 set :application, "facimun"
 set :user, "bruno"

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class InscricoesSemanaArquiteturaController < ApplicationController
   def index
     redirect_to action: :new
