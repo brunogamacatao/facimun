@@ -1,0 +1,2 @@
+module InscricoesSemanaArquiteturaHelper
+end

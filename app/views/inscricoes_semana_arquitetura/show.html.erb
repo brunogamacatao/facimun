@@ -1,0 +1,15 @@
+<div class="row">
+  <br/>
+  <div class="panel callout radius">
+    <h1 class="text-center">Inscrição registrada</h1>
+    <hr/>
+    <h3>Sua inscrição foi registrada com sucesso !</h3>
+    <h4>Clique no botão abaixo para emitir seu boleto.</h4>
+    <hr/>
+    <%= link_to "Emitir Boleto", inscricao_semana_arquitetura_emitir_boleto_path(@inscricao), :class => 'large button secondary expand round' %>
+    <div data-alert class="alert-box alert">
+      Sua inscrição só será confirmada após o pagamento deste boleto
+      <a href="#" class="close">&times;</a>
+    </div>
+  </div>
+</div>

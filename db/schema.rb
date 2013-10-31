@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130925145713) do
+ActiveRecord::Schema.define(:version => 20131031182603) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(:version => 20130925145713) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "cidades", :force => true do |t|
+    t.string   "nome"
+    t.integer  "estado_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "cidades", ["estado_id"], :name => "index_cidades_on_estado_id"
+
   create_table "comites", :force => true do |t|
     t.string   "nome"
     t.integer  "vagas"
@@ -85,13 +94,27 @@ ActiveRecord::Schema.define(:version => 20130925145713) do
     t.string   "sigla"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "pais_id"
+  end
+
+  create_table "eventos_paralelos", :force => true do |t|
+    t.integer  "ordem"
+    t.string   "nome"
+    t.integer  "tipo_cd"
+    t.string   "horario"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "vagas"
+  end
+
+  create_table "eventos_paralelos_inscricoes_semana_arquitetura", :id => false, :force => true do |t|
+    t.integer "evento_paralelo_id"
+    t.integer "inscricao_semana_arquitetura_id"
   end
 
   create_table "inscricao_genericas", :force => true do |t|
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "inscrevivel_id"
-    t.string   "inscrevivel_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "inscricoes", :force => true do |t|
@@ -133,6 +156,27 @@ ActiveRecord::Schema.define(:version => 20130925145713) do
     t.string   "inscrevivel_type"
   end
 
+  create_table "inscricoes_semana_arquitetura", :force => true do |t|
+    t.string   "nome"
+    t.string   "cpf"
+    t.date     "data_de_nascimento"
+    t.string   "email"
+    t.string   "telefone"
+    t.string   "instituicao"
+    t.string   "curso"
+    t.string   "periodo"
+    t.string   "matricula"
+    t.integer  "tipo_inscricao_cd"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "endereco"
+    t.string   "bairro"
+    t.string   "cep"
+    t.string   "complemento"
+    t.string   "cidade"
+    t.string   "uf"
+  end
+
   create_table "pagamentos", :force => true do |t|
     t.decimal  "valor"
     t.integer  "titulo_id"
@@ -146,6 +190,7 @@ ActiveRecord::Schema.define(:version => 20130925145713) do
     t.string   "nome"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "sigla"
   end
 
   create_table "preferencia_cargos", :force => true do |t|

@@ -20,6 +20,6 @@ test:
 
 production:
   adapter: sqlite3
-  database: ~/eventos.sqlite3
+  database: ~/evento_arquitetura.sqlite3
   pool: 5
   timeout: 5000

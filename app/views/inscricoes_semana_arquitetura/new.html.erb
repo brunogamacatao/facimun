@@ -1,0 +1,48 @@
+<%= simple_form_for @inscricao do |f| %>
+  <div class="row">
+    <%= field_set_tag 'Dados Pessoais', :class => 'panel radius' do %>
+      <div class="small-6 columns">
+        <%= f.input "nome" %>
+        <%= f.input "cpf", input_html: { class: 'cpf' } %>
+        <%= f.input "data_de_nascimento", input_html: { class: 'data' }, as: 'string' %>
+        <%= f.input "email" %>
+        <%= f.input "telefone", input_html: { class: 'telefone' } %>
+        <%= f.input "endereco", label: "Endereço" %>
+        <%= f.input "bairro" %>
+      </div>
+      <div class="small-6 columns">
+        <%= f.input "cep", input_html: { class: 'cep' } %>
+        <%= f.input "complemento" %>
+        <%= f.input "cidade" %>
+        <%= f.input "uf", collection: Estado.order(:nome), label_method: :nome, value_method: :sigla %>
+        <%= f.input "instituicao" %>
+        <%= f.input "curso" %>
+        <%= f.input "periodo" %>
+        <%= f.input "matricula" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <%= field_set_tag 'Tipo de Inscrição', :class => 'panel radius' do %>
+      <%= f.input "tipo_inscricao_cd", label: 'Tipo', collection: [{id: 0, label: 'Aluno Facisa'}, {id: 1, label: 'Aluno de Outra IES'}, {id: 2, label: 'Profissional'}], as: :radio, :label_method => lambda { |i| i[:label] }, :value_method => lambda { |i| i[:id] } %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="small-6 columns">
+      <%= field_set_tag 'Minicurso', :class => 'panel radius' do %>
+        <label class="checkbox">
+          <input class="check_boxes optional" id="inscricao_semana_arquitetura_evento_paralelo_ids_1" name="inscricao_semana_arquitetura[evento_paralelo_ids][]" type="checkbox" value="1">
+          Gestão de Escritórios de Arquitetura - 6h/a
+        </label>        
+      <% end %>
+    </div>
+    <div class="small-6 columns">
+      <%= field_set_tag 'Oficinas', :class => 'panel radius' do %>
+        <%= f.association :eventos_paralelos, as: :check_boxes, collection: @oficinas, prompt: 'Escolha uma Oficina', label_method: :nome %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <%= f.submit 'Finalizar Inscrição', :class => 'large button expand round' %>
+  </div>
+<% end %>  

@@ -40,3 +40,5 @@ end
 gem 'unicorn'
 gem 'capistrano'
 gem 'activeadmin'
+gem 'seed_dump'
+gem 'simple_enum'
