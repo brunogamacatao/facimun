@@ -28,17 +28,10 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="small-6 columns">
-      <%= field_set_tag 'Minicurso', :class => 'panel radius' do %>
-        <label class="checkbox">
-          <input class="check_boxes optional" id="inscricao_semana_arquitetura_evento_paralelo_ids_1" name="inscricao_semana_arquitetura[evento_paralelo_ids][]" type="checkbox" value="1">
-          Gestão de Escritórios de Arquitetura - 6h/a
-        </label>        
-      <% end %>
-    </div>
-    <div class="small-6 columns">
+    <div class="small-12 columns">
       <%= field_set_tag 'Oficinas', :class => 'panel radius' do %>
-        <%= f.association :eventos_paralelos, as: :check_boxes, collection: @oficinas, prompt: 'Escolha uma Oficina', label_method: :nome %>
+        <label class="checkbox"><input class="check_boxes optional" id="inscricao_semana_arquitetura_evento_paralelo_ids_2" name="inscricao_semana_arquitetura[evento_paralelo_ids][]" type="checkbox" value="2">Design de Móveis/Produtos 3h/a</label>
+        <label class="checkbox"><input class="check_boxes optional" id="inscricao_semana_arquitetura_evento_paralelo_ids_5" name="inscricao_semana_arquitetura[evento_paralelo_ids][]" type="checkbox" value="5">Circulação Vertical em Edificações 3h/a</label>      
       <% end %>
     </div>
   </div>
