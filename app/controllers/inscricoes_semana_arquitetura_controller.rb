@@ -16,8 +16,8 @@ class InscricoesSemanaArquiteturaController < ApplicationController
     if @inscricao.save
       inscrevivel = InscricaoGenerica.create! { |i| i.inscrevivel = @inscricao }
       
-      valor_base = [20, 40, 60][@inscricao.tipo_inscricao_cd]
-      valor_por_evento = [20, 25, 50][@inscricao.tipo_inscricao_cd]
+      valor_base       = [20, 40, 60, 30, 30, 20][@inscricao.tipo_inscricao_cd]
+      valor_por_evento = [20, 25, 50, 20, 20, 20][@inscricao.tipo_inscricao_cd]
       
       valor_inscricao = valor_base + valor_por_evento * @inscricao.eventos_paralelos.count()
       inscrevivel.titulos << Titulo.create(inscricao_generica_id: @inscricao, data_de_vencimento: 1.days.from_now.to_date, valor: valor_inscricao)

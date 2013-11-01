@@ -24,7 +24,7 @@
   </div>
   <div class="row">
     <%= field_set_tag 'Tipo de Inscrição', :class => 'panel radius' do %>
-      <%= f.input "tipo_inscricao_cd", label: 'Tipo', collection: [{id: 0, label: 'Aluno Facisa'}, {id: 1, label: 'Aluno de Outra IES'}, {id: 2, label: 'Profissional'}], as: :radio, :label_method => lambda { |i| i[:label] }, :value_method => lambda { |i| i[:id] } %>
+      <%= f.input "tipo_inscricao_cd", label: 'Tipo de Inscrição', collection: [{id: 0, label: 'Aluno Facisa'}, {id: 3, label: 'Aluno UFCG'}, {id: 4, label: 'Aluno UFPB'}, {id: 5, label: 'Aluno UNIPE'}, {id: 1, label: 'Aluno de Outra IES'}, {id: 2, label: 'Profissional'}], :label_method => lambda { |i| i[:label] }, :value_method => lambda { |i| i[:id] } %>
     <% end %>
   </div>
   <div class="row">

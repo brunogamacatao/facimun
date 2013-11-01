@@ -18,7 +18,7 @@ class InscricaoSemanaArquitetura < ActiveRecord::Base
   def sacado; self; end;
   
   # Atributos especiais
-  as_enum :tipo_inscricao, :aluno_facisa => 0, :aluno_outra_ies => 1, :profissional => 2
+  as_enum :tipo_inscricao, :aluno_facisa => 0, :aluno_outra_ies => 1, :profissional => 2, :aluno_ufcg => 3, :aluno_ufpb => 4, :aluno_unipe => 5
   
   # Validacoes
   validates_presence_of :nome, :cpf, :endereco, :bairro, :cep, :data_de_nascimento, :cidade, :uf, :instituicao, :curso, :periodo, :email, :telefone
