@@ -26,5 +26,8 @@ class InscricaoSemanaArquitetura < ActiveRecord::Base
   validates_format_of :telefone, :with => /^\(\d{2}\)\d{4}-\d{4}$/, :message => "O telefone informado é inválido"
   validates_inclusion_of :uf, :in => lambda { |d| Estado.select(:sigla).map{|e| e.sigla} }, :message => "O estado informado é inválido"
   validates_presence_of :tipo_inscricao_cd
-  
+
+  def ultimo_titulo
+    titulos.last
+  end
 end
